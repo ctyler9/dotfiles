@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
+set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -30,9 +30,15 @@ exec --no-startup-id dex --autostart --environment i3
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-
 # set screen dpi
 exec --no-startup-id xrandr --dpi 96
+
+# set multimonitor if exists
+#exec --no-startup-id xrandr | grep 'HDMI-1-2 connected' && xrandr --output HDMI-1-2 --auto --left-of DP-1-1-8
+
+# Move container to the other monitor
+bindsym $mod+Shift+comma move container to output right
+bindsym $mod+Shift+period move container to output left
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -40,23 +46,17 @@ exec --no-startup-id nm-applet
 
 # Startup apps 
 exec --no-startup-id caffeine-indicator
+exec --no-startup-id redshift-gtk
+exec --no-startup-id shutter 
 
 # startup picom for transparency 
 exec --no-startup-id picom 
 # pretty lockscreen
 # exec --no-startup-id xss-lock -l ~/.config/pretty_lockscreen.sh
 
-# Use amixer to adjust volume
-#bindsym F12 exec --no-startup-id amixer -q sset Master 5%+ unmute
-#bindsym F11 exec --no-startup-id amixer -q sset Master 5%- unmute
-#bindsym F10 exec --no-startup-id amixer -q set Master toggle
-#bindsym F8 exec amixer -q sset Master toggle
-
-
 bindsym F12 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym F11 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym F10 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -76,15 +76,14 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # set wallpaper
-# exec --no-startup-id feh --bg-fill wallpaper/neon-genesis/evan_unit1_vaporwave.jpg
-exec --no-startup-id nitrogen --random --set-zoom-fill ~/wallpaper/neon-genesis
+exec --no-startup-id nitrogen --random --set-zoom-fill ~/wallpaper/high_res
 
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -93,10 +92,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -105,7 +104,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+z split z
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -182,10 +181,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
