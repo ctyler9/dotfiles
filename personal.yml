@@ -1,0 +1,50 @@
+- name: Get started
+  hosts: localhost
+  become: true
+  tasks:
+  - name: Install zsh
+    pacman: name=zsh
+  - name: Change shell
+    shell: chsh -s `which zsh`
+  - name: check if oh my zsh is already installed
+    stat: 
+      path: ~/.oh-my-zsh
+    register: ohmyzsh_check
+  - name: Install ohmyzsh (please don't tell people i use this)
+    shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    when: ohmyzsh_check.stat.exists == false
+  - name: Install the zsh plugin autosuggestions
+    ansible.builtin.git: 
+      repo: https://github.com/zsh-users/zsh-autosuggestions.git
+      dest: ~/.zsh/zsh-autosuggestions
+  - name: update our zhrc
+    shell: sed -i 's/(git/(git zsh-autosuggestions/' ~/.zshrc
+
+  - name: install core packages
+    pacman: 
+      name:
+        - tmux
+        - alacritty
+        - picom
+        - i3
+        - stow
+        - fzf 
+        - git
+
+  - name: install neovim
+    pacman: name=neovim
+  - name: updated zshrc alias for nvim
+    shell: sed -i "alias=vim='nvim'" ~/.zshrc
+
+  - name: check if dotfiles exists 
+    stat: 
+      path: ~/dotfiles
+    register: dotfiles_check
+  - name: load in dotfiles
+    ansible.builtin.git:
+      repo: https://github.com/ctyler9/dotfiles.git
+      dest: ~/
+    when: dotfiles_check
+  - name: stow dotfiles
+    shell: stow ~/dotfiles
+
