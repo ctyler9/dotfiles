@@ -16,9 +16,11 @@
   - name: Install the zsh plugin autosuggestions
     ansible.builtin.git: 
       repo: https://github.com/zsh-users/zsh-autosuggestions.git
-      dest: ~/.zsh/zsh-autosuggestions
-  - name: update our zhrc
-    shell: sed -i 's/(git/(git zsh-autosuggestions/' ~/.zshrc
+      dest: ~/.oh-my-zsh/plugins/zsh-autosuggestions
+  - name: install fzf history search
+    ansible.builtin.git:
+      repo: https://github.com/joshskidmore/zsh-fzf-history-search.git
+      dest: ~/.oh-my-zsh/plugins/zsh-fzf-history-search
 
   - name: install core packages
     pacman: 

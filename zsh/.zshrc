@@ -3,6 +3,7 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export PATH="$HOME/.local/scripts:$PATH"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -23,6 +24,9 @@ alias vi="nvim"
 alias oldvim="vim"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
+
+#shortcuts 
+bindkey '^F' 'tmux-sessionizer'
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
@@ -75,7 +79,7 @@ alias oldvim="vim"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(zsh-fzf-history-search)
 
 source $ZSH/oh-my-zsh.sh
 

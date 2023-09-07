@@ -1,2 +1,7 @@
 window:
   opacity: 0.85
+font:
+  normal:
+    family: JetBrains Mono
+    style: Medium
+  size: 12
