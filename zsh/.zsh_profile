@@ -1,0 +1,11 @@
+export XDG_CONFIG_HOME=$HOME/.config
+export PATH="$HOME/.local/scripts:$PATH"
+
+# ALIASES 
+alias vim="nvim"
+alias vi="nvim"
+alias oldvim="vim"
+
+bindkey -s ^f "tmux-sessionizer\n"
+
+
