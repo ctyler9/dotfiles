@@ -13,30 +13,26 @@
   - name: Install ohmyzsh (please don't tell people i use this)
     shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     when: ohmyzsh_check.stat.exists == false
-  - name: Install the zsh plugin autosuggestions
-    ansible.builtin.git: 
-      repo: https://github.com/zsh-users/zsh-autosuggestions.git
-      dest: ~/.oh-my-zsh/plugins/zsh-autosuggestions
-  - name: install fzf history search
-    ansible.builtin.git:
-      repo: https://github.com/joshskidmore/zsh-fzf-history-search.git
-      dest: ~/.oh-my-zsh/plugins/zsh-fzf-history-search
 
   - name: install core packages
     pacman: 
       name:
         - tmux
         - alacritty
-        - picom
+        - picom 
+        - feh 
         - i3
         - stow
+        - ncdu
         - fzf 
         - git
+        - firefox
+        - vlc
+        - nautilus
+        - emacs
 
   - name: install neovim
     pacman: name=neovim
-  - name: updated zshrc alias for nvim
-    shell: sed -i "alias=vim='nvim'" ~/.zshrc
 
   - name: check if dotfiles exists 
     stat: 
@@ -46,7 +42,13 @@
     ansible.builtin.git:
       repo: https://github.com/ctyler9/dotfiles.git
       dest: ~/
-    when: dotfiles_check
+    when: dotfiles_check.stat.exists == false
   - name: stow dotfiles
     shell: stow ~/dotfiles
 
+
+# TO-DO 
+# - python, rust, go, npm
+# - aur: caffeine-indicator, redshift, shutter, teams-for-linux, libreoffice-still, thunderbird-beta-bin, signal-desktop, dropbox, minecraft-launcher, 
+# - manage/download fonts (nerd font for obscure symbols)
+# - download backgrounds/wallpapers and stow (dotfile config) 

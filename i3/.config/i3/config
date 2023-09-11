@@ -52,6 +52,9 @@ exec --no-startup-id redshift-gtk
 # startup picom for transparency 
 exec --no-startup-id picom 
 
+# set gnome apps to dark mode
+exec --no-startup-id gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+
 #set $refresh_i3status killall -SIGUSR1 i3status
 #bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 #bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
@@ -80,7 +83,7 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # set wallpaper
-exec --no-startup-id nitrogen --random --set-zoom-fill ~/wallpaper/high_res
+exec --no-startup-id feh --randomize --bg-fill ~/wallpaper/high_res
 
 
 # change focus
