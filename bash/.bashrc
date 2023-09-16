@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export BASH="$HOME/.oh-my-zsh"
+export OSH="$HOME/.oh-my-bash"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -72,7 +72,7 @@ BASH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source $BASH/oh-my-zsh.sh
+source $OSH/oh-my-bash.sh
 
 # User configuration
 
@@ -96,9 +96,6 @@ source $BASH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/.bash_profile
 source /usr/share/fzf/key-bindings.bash
 source /usr/share/fzf/completion.bash

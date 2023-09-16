@@ -2,6 +2,6 @@ window:
   opacity: 0.85
 font:
   normal:
-    family: JetBrains Mono
+    family: JetBrainsMono Nerd Font
     style: Medium
   size: 12

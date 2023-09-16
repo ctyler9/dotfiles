@@ -6,6 +6,5 @@ export PATH="$HOME/.local/scripts:$PATH"
 alias oldvim="vim"
 alias vim="nvim"
 
-bindkey -s ^f "tmux-sessionizer\n"
-
+alias ts="tmux-sessionizer"
 

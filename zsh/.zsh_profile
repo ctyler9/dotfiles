@@ -1,9 +1,11 @@
 export XDG_CONFIG_HOME=$HOME/.config
 export PATH="$HOME/.local/scripts:$PATH"
+export PATH="$HOME/.config/emacs/bin:$PATH"
 
 # ALIASES 
 alias oldvim="vim"
 alias vim="nvim"
+alias emacs="emacsclient -c -a 'emacs'"
 
 bindkey -s ^f "tmux-sessionizer\n"
 
