@@ -1,0 +1,12 @@
+#!Author: Clay Tyler
+
+* Drivers
+** NVIDIA
+- pacman -S nvidia nvidia-libgl
+* Packages
+** Issues
+- Fix firefox slow to boot
+- team-for-linux aur package gets stuck on electron
+- automatically install yay
+- doom-emacs glphys don't show even with nerd font installed in terminal and i3
+- redshift-gtk geoclue error, won't start

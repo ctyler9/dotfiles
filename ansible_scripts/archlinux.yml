@@ -30,6 +30,7 @@
         - vlc
         - nautilus
         - emacs
+        - ttf-jetbrains-mono-nerd 
 
   - name: install neovim
     pacman: name=neovim
@@ -52,3 +53,6 @@
 # - aur: caffeine-ng, redshift, shutter, teams-for-linux, libreoffice-still, thunderbird-beta-bin, signal-desktop, dropbox, minecraft-launcher, doom-emacs, spotify  
 # - manage/download fonts (nerd font for obscure symbols)
 # - download backgrounds/wallpapers and stow (dotfile config) 
+# - redshift geoclue error
+# - firefox takes a while to boot (graphics driver?)
+#
