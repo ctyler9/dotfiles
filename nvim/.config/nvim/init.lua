@@ -549,3 +549,9 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 vim.opt.relativenumber = true
+
+-- Move 1 more lines up or down in normal and visual selection modes
+vim.api.nvim_set_keymap('n', 'K', [[:m .-2<CR>==]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'J', [[:m .+1<CR>==]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('x', 'K', [[:m '<-2<CR>gv=gv]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('x', 'J', [[:m '>+1<CR>gv=gv]], { noremap = true, silent = true })
