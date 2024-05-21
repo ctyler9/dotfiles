@@ -87,7 +87,6 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 # set wallpaper
 exec --no-startup-id feh --randomize --bg-fill ~/wallpapers/high_res
 
-
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -113,7 +112,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+z split z
+bindsym $mod+z split h
 
 # split in vertical orientation
 bindsym $mod+v split v

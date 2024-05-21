@@ -22,7 +22,7 @@
 
 (require 'use-package-ensure) ;; Load use-package-always-ensure
 (setq use-package-always-ensure t) ;; Always ensures that a package is installed
-(setq package-archives '(("melpa" . "https://melpa.org/packages/") ;; Sets default package repositories
+(setq package-rchives '(("melpa" . "https://melpa.org/packages/") ;; Sets default package repositories
                          ("org" . "https://orgmode.org/elpa/")
                          ("elpa" . "https://elpa.gnu.org/packages/")
                          ("nongnu" . "https://elpa.nongnu.org/nongnu/"))) ;; For Eat Terminal
@@ -205,21 +205,36 @@
   (projectile-project-search-path '("~/projects/" "~/work/" ("~/github" . 1)))) ;; . 1 means only search the first subdirectory level for projects
 ;; Use Bookmarks for smaller, not standard projects
 
-(use-package eglot
-  :ensure nil ;; Don't install eglot because it's now built-in
-  :hook ((c-mode c++-mode ;; Autostart lsp servers for a given mode
-                 lua-mode) ;; Lua-mode needs to be installed
-         . eglot-ensure)
+(use-package treesit-auto
   :custom
-  ;; Good default
-  (eglot-events-buffer-size 0) ;; No event buffers (Lsp server logs)
-  (eglot-autoshutdown t);; Shutdown unused servers.
-  (eglot-report-progress nil) ;; Disable lsp server logs (Don't show lsp messages at the bottom, java)
-  ;; Manual lsp servers
+  (treesit-auto-install 'prompt)
   :config
-  (add-to-list 'eglot-server-programs
-               `(lua-mode . ("PATH_TO_THE_LSP_FOLDER/bin/lua-language-server" "-lsp"))) ;; Adds our lua lsp server to eglot's server list
-  )
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode))
+
+(use-package go-mode
+  :ensure t)
+
+(use-package markdown-mode
+  :ensure t)
+
+(setq treesit-auto-langs '(python rust go gomod bash cmake css dockerfile html javascript make markdown json toml yaml r lua cpp c bash ))
+
+;;(use-package eglot
+;;  :ensure nil ;; Don't install eglot because it's now built-in
+;;  :hook ((c-mode c++-mode ;; Autostart lsp servers for a given mode
+;;                 lua-mode) ;; Lua-mode needs to be installed
+;;         . eglot-ensure)
+;;  :custom
+;;  ;; Good default
+;;  (eglot-events-buffer-size 0) ;; No event buffers (Lsp server logs)
+;;  (eglot-autoshutdown t);; Shutdown unused servers.
+;;  (eglot-report-progress nil) ;; Disable lsp server logs (Don't show lsp messages at the bottom, java)
+;;  ;; Manual lsp servers
+;;  :config
+;;  (add-to-list 'eglot-server-programs
+;;               `(lua-mode . ("PATH_TO_THE_LSP_FOLDER/bin/lua-language-server" "-lsp"))) ;; Adds our lua lsp server to eglot's server list
+;;  )
 
 (use-package yasnippet-snippets
   :hook (prog-mode . yas-minor-mode))
