@@ -164,9 +164,10 @@
           nil nil t)
   )
 
-(use-package gruvbox-theme
-  :config
-  (load-theme 'gruvbox-dark-medium t)) ;; We need to add t to trust this package
+;(use-package gruvbox-theme
+;  :config
+;  (load-theme 'gruvbox-dark-medium t)) ;; We need to add t to trust this package
+(load-theme 'modus-vivendi) ; Dark theme
 
 (add-to-list 'default-frame-alist '(alpha-background . 90)) ;; For all new frames henceforth
 
@@ -202,7 +203,7 @@
   :custom
   (projectile-run-use-comint-mode t) ;; Interactive run dialog when running projects inside emacs (like giving input)
   (projectile-switch-project-action #'projectile-dired) ;; Open dired when switching to a project
-  (projectile-project-search-path '("~/projects/" "~/work/" ("~/github" . 1)))) ;; . 1 means only search the first subdirectory level for projects
+  (projectile-project-search-path '("~/personal/" "~/work/"))) ;; . 1 means only search the first subdirectory level for projects
 ;; Use Bookmarks for smaller, not standard projects
 
 (use-package treesit-auto
@@ -212,29 +213,23 @@
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
-(use-package go-mode
-  :ensure t)
-
-(use-package markdown-mode
-  :ensure t)
-
 (setq treesit-auto-langs '(python rust go gomod bash cmake css dockerfile html javascript make markdown json toml yaml r lua cpp c bash ))
 
-;;(use-package eglot
-;;  :ensure nil ;; Don't install eglot because it's now built-in
-;;  :hook ((c-mode c++-mode ;; Autostart lsp servers for a given mode
-;;                 lua-mode) ;; Lua-mode needs to be installed
-;;         . eglot-ensure)
-;;  :custom
-;;  ;; Good default
-;;  (eglot-events-buffer-size 0) ;; No event buffers (Lsp server logs)
-;;  (eglot-autoshutdown t);; Shutdown unused servers.
-;;  (eglot-report-progress nil) ;; Disable lsp server logs (Don't show lsp messages at the bottom, java)
-;;  ;; Manual lsp servers
-;;  :config
-;;  (add-to-list 'eglot-server-programs
-;;               `(lua-mode . ("PATH_TO_THE_LSP_FOLDER/bin/lua-language-server" "-lsp"))) ;; Adds our lua lsp server to eglot's server list
-;;  )
+(use-package eglot
+  :ensure nil ;; Don't install eglot because it's now built-in
+  :hook ((c-ts-mode 
+		  c++ts--mode ;; Autostart lsp servers for a given mode
+		  lua-mode
+		  python-ts-mode 
+		  go-ts-mode) . eglot-ensure)
+  :custom
+  ;; Good default
+  (eglot-events-buffer-size 0) ;; No event buffers (Lsp server logs)
+  (eglot-autoshutdown t);; Shutdown unused servers.
+  (eglot-ignored-server-capabilities 
+   '(:hoverProvider))
+  (eglot-report-progress nil) ;; Disable lsp server logs (Don't show lsp messages at the bottom, java)
+  )
 
 (use-package yasnippet-snippets
   :hook (prog-mode . yas-minor-mode))
@@ -444,3 +439,26 @@
 (setq gc-cons-threshold (* 2 1000 1000))
 ;; Increase the amount of data which Emacs reads from the process
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
+
+(setq inferior-lisp-program "/usr/bin/sbcl")
+
+
+;; define custom functions for scrolling and recentering 
+(defun my-scroll-up-and-recenter () 
+  "Scroll up half a page and recenter" 
+  (interactive) 
+  (evil-scroll-up nil) 
+  (recenter))
+
+(defun my-scroll-down-and-recenter () 
+  "Scroll down half a page and recenter" 
+  (interactive) 
+  (evil-scroll-down nil) 
+  (recenter))
+
+;; bind the above to keys in evil 
+(evil-define-key 'normal 'global 
+  (kbd "C-d") 'my-scroll-down-and-recenter 
+  (kbd "C-u") 'my-scroll-up-and-recenter)
+
+(setq org-agenda-files (directory-files-recursively "~/Documents/org/agenda/" "\\.org$"))

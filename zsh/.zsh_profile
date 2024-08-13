@@ -8,6 +8,7 @@ export PATH="$HOME/go/bin:$PATH"
 alias oldvim="vim"
 alias vim="nvim"
 alias emacs="emacsclient -c -a 'emacs'"
+alias nbview="nbviewer-gui"
 
 bindkey -s ^f "tmux-sessionizer\n"
 
