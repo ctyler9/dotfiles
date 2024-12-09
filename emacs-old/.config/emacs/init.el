@@ -22,7 +22,7 @@
 
 (require 'use-package-ensure) ;; Load use-package-always-ensure
 (setq use-package-always-ensure t) ;; Always ensures that a package is installed
-(setq package-rchives '(("melpa" . "https://melpa.org/packages/") ;; Sets default package repositories
+(setq package-archives '(("melpa" . "https://melpa.org/packages/") ;; Sets default package repositories
                          ("org" . "https://orgmode.org/elpa/")
                          ("elpa" . "https://elpa.gnu.org/packages/")
                          ("nongnu" . "https://elpa.nongnu.org/nongnu/"))) ;; For Eat Terminal
@@ -163,6 +163,8 @@
                 (evil-normalize-keymaps))))
           nil nil t)
   )
+(add-to-list 'evil-emacs-state-modes 'doc-view-mode)
+
 
 ;(use-package gruvbox-theme
 ;  :config
@@ -218,7 +220,7 @@
 (use-package eglot
   :ensure nil ;; Don't install eglot because it's now built-in
   :hook ((c-ts-mode 
-		  c++ts--mode ;; Autostart lsp servers for a given mode
+		  c++-ts-mode ;; Autostart lsp servers for a given mode
 		  lua-mode
 		  python-ts-mode 
 		  go-ts-mode) . eglot-ensure)
@@ -230,6 +232,12 @@
    '(:hoverProvider))
   (eglot-report-progress nil) ;; Disable lsp server logs (Don't show lsp messages at the bottom, java)
   )
+
+(setq eglot-server-programs
+      '((python-ts-mode . ("/home/ctyler/.local/bin/pylsp")) (c++-ts-mode . ("/usr/bin/clangd"))))
+
+(setq-local c-basic-offset 4)
+
 
 (use-package yasnippet-snippets
   :hook (prog-mode . yas-minor-mode))
@@ -440,7 +448,7 @@
 ;; Increase the amount of data which Emacs reads from the process
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 
-(setq inferior-lisp-program "/usr/bin/sbcl")
+(setq inferior-lisp-program "/usr/bin/sbcl --dynamic-space-size 32768")
 
 
 ;; define custom functions for scrolling and recentering 

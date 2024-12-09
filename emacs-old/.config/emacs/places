@@ -1,0 +1,32 @@
+;;; -*- coding: utf-8; mode: lisp-data -*-
+(("/home/ctyler/personal/mini-redis/" . 108)
+ ("/home/ctyler/.config/emacs/"
+  (dired-filename . "/home/ctyler/.config/emacs/init.el"))
+ ("/home/ctyler/dotfiles/emacs/.config/emacs/"
+  (dired-filename . "/home/ctyler/dotfiles/emacs/.config/emacs/init.el.bak"))
+ ("/home/ctyler/dotfiles/emacs/.config/emacs/init.el.bak" . 111)
+ ("/home/ctyler/Documents/org/"
+  (dired-filename . "/home/ctyler/Documents/org/guitar.org"))
+ ("/home/ctyler/Documents/org/cs.org" . 55)
+ ("/home/ctyler/Documents/org/guitar.org" . 192)
+ ("/home/ctyler/personal/mini-redis/server.cpp" . 181)
+ ("/home/ctyler/dotfiles/emacs/.config/emacs/init.el" . 15819)
+ ("/home/ctyler/dotfiles/emacs/.config/"
+  (dired-filename . "/home/ctyler/dotfiles/emacs/.config/emacs"))
+ ("/home/ctyler/.config/"
+  (dired-filename . "/home/ctyler/.config/emacs"))
+ ("/home/ctyler/"
+  (dired-filename . "/home/ctyler/.config"))
+ ("/home/"
+  (dired-filename . "/home/ctyler"))
+ ("/home/ctyler/personal/"
+  (dired-filename . "/home/ctyler/personal/rust-inference"))
+ ("/home/ctyler/Documents/org/chess.org" . 166)
+ ("/home/ctyler/dotfiles/README.md" . 43)
+ ("/home/ctyler/personal/meme-coins/"
+  (dired-filename . "/home/ctyler/personal/meme-coins/fetch_data.py"))
+ ("/home/ctyler/personal/meme-coins/fetch_data.py" . 138)
+ ("/home/ctyler/personal/algo-trading/src/"
+  (dired-filename . "/home/ctyler/personal/algo-trading/src/agent.lisp"))
+ ("/home/ctyler/personal/algo-trading/src/agent.lisp" . 1505)
+ ("/home/ctyler/personal/mini-redis/test.cpp" . 78))

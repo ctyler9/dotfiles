@@ -1,0 +1,9 @@
+# Ignore all files
+*
+
+# Exclude the .gitignore file itself
+!.gitignore
+
+# Exclude init.el
+!init.el
+
