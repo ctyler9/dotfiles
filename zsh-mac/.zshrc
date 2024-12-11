@@ -6,6 +6,11 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH=/opt/homebrew/bin:$PATH
 
 
+# fzf
+source .key-bindings.zsh
+bindkey -s ^f "tmux-sessionizer\n"
+
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -73,7 +78,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
-plugins=(zsh-syntax-highlighting)
+#plugins=(zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 

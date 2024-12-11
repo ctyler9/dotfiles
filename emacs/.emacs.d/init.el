@@ -208,7 +208,8 @@
   ;; But without this, I fear you could start Graphical Emacs and be sad :(
   (set-face-attribute 'default nil :family "JetBrainsMono Nerd Font"  :height 100)
   (when (eq system-type 'darwin)       ;; Check if the system is macOS.
-    (setq mac-command-modifier 'meta)  ;; Set the Command key to act as the Meta key.
+    (setq mac-command-modifier 'control)  ;; Set the Commad key to act as the Meta key.
+	(setq mac-control-modifier 'meta)    ;; Option (Alt) as Meta
     (set-face-attribute 'default nil :family "JetBrainsMono Nerd Font" :height 130))
 
   ;; Save manual customizations to a separate file instead of cluttering `init.el'.
@@ -1200,3 +1201,7 @@
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 
+
+;; Use Command as Meta on macOS
+;(when (eq system-type 'darwin)
+;  (setq mac-command-modifier 'meta))
