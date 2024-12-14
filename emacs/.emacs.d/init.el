@@ -706,8 +706,9 @@
   (lsp-headerline-breadcrumb-enable-diagnostics nil)    ;; Disable diagnostics in headerline.
   (lsp-headerline-breadcrumb-icons-enable nil)          ;; Disable icons in breadcrumb.
   ;; Semantic settings
-  (lsp-semantic-tokens-enable nil))                     ;; Disable semantic tokens.
-
+  (lsp-semantic-tokens-enable nil)                     ;; Disable semantic tokens.
+  ;; Disable Flycheck (or other syntax checkers) for Python to remove blue lines
+  (flycheck-python-flake8-executable nil))              ;; Disable flake8 (Python's syntax checking)
 
 ;;; LSP Additional Servers
 ;; You can extend `lsp-mode' by integrating additional language servers for specific 
@@ -876,6 +877,7 @@
   (evil-define-key 'normal 'global (kbd "<leader> x d") 'dired)
   (evil-define-key 'normal 'global (kbd "<leader> x j") 'dired-jump)
   ;(evil-define-key 'normal 'global (kbd "<leader> x f") 'find-file)
+  ;(evil-define-key 'normal 'dired-mode-map (kbd "<leader> .") 'find-file)
   (evil-define-key 'normal 'global (kbd "<leader> .") 'find-file)
 
   ;; Diff-HL navigation for version control
@@ -918,6 +920,9 @@
 
   ;; Embark actions for contextual commands
   ;(evil-define-key 'normal 'global (kbd "<leader> .") 'embark-act)
+
+  ;; annoying bug where :w sometimes corrects to :W
+  (evil-ex-define-cmd "W" 'evil-write)
 
   ;; Undo tree visualization
   (evil-define-key 'normal 'global (kbd "<leader> u") 'undo-tree-visualize)
