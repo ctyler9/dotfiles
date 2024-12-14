@@ -4,7 +4,7 @@ function openFirefox()
 end
 
 function openTerminal()
-	hs.application.launchOrFocus("Alacritty")
+	hs.application.launchOrFocus("iTerm")
 end
 
 function openEmacs()
@@ -27,18 +27,18 @@ function openSignal()
 	hs.application.launchOrFocus("Signal")
 end
 
-function openSpotify()
-	hs.application.launchOrFocus("Spotify")
+function openMusic()
+	hs.application.launchOrFocus("Music")
 end
 
-hs.hotkey.bind({ "ctrl" }, "1", openFirefox)
-hs.hotkey.bind({ "ctrl" }, "2", openTerminal)
-hs.hotkey.bind({ "ctrl" }, "3", openEmacs)
-hs.hotkey.bind({ "ctrl" }, "4", openMail)
-hs.hotkey.bind({ "ctrl" }, "5", openTeams)
-hs.hotkey.bind({ "ctrl" }, "6", openMessages)
-hs.hotkey.bind({"ctrl"}, "7", openSignal)
-hs.hotkey.bind({"ctrl"}, "9", openSpotify)
+hs.hotkey.bind({ "alt" }, "1", openFirefox)
+hs.hotkey.bind({ "alt" }, "2", openTerminal)
+hs.hotkey.bind({ "alt" }, "3", openEmacs)
+hs.hotkey.bind({ "alt" }, "4", openMail)
+hs.hotkey.bind({ "alt" }, "5", openTeams)
+hs.hotkey.bind({ "alt" }, "6", openMessages)
+hs.hotkey.bind({"alt"}, "7", openSignal)
+hs.hotkey.bind({"alt"}, "9", openMusic)
 
 
 
